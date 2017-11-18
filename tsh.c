@@ -169,11 +169,19 @@ int main(int argc, char **argv)
  */
 void eval(char *cmdline) 
 {
+	char *argv[MAXARGS];
+	parseline(cmdline, argv);
+	builtin_cmd(argv);
+
 	return;
 }
 
 int builtin_cmd(char **argv)
 {
+	char *cmd = argv[0];
+	if(!strcmp(cmd, "quit")){
+		exit(0);
+	}
 	return 0;
 }
 
